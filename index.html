@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            font-size: 30px;
+        }
+        .box{
+            display: flex;
+            flex-wrap: wrap;
+            border: 2px solid black;
+            width: 20%;
+        }
+        .results{
+            width: 100%;
+            height: 50px;
+            border: 1px solid grey;
+            margin: 10px;
+            padding: 5px;
+
+        }
+        .results input{
+            width: 100%;
+            height: 100%;
+            border: none;
+            font-size: 35px;
+            text-align: right;
+        }
+        .number{
+            flex: 1;
+        }
+        ul{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 20px;
+            padding: 0 10px;
+            margin: 10px 0;
+        }
+        li{
+            width: 20%;
+            height: 100%;
+            display: grid;
+            place-items: center;
+        }
+        input{
+            width: 100%;
+            height: 35px;
+            border: 2px solid blue;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box">
+        <div class="results"><input id="results" type="text" disabled></div>
+        <div class="number">
+            <ul>
+                <li><input id="1" value="1" type="button" onclick="inputResults('1');"></li>
+                <li><input id="2" value="2" type="button" onclick="inputResults('2');"></li>
+                <li><input id="3" value="3" type="button" onclick="inputResults('3');"></li>
+                <li><input id="plus" value="+" type="button" onclick="inputResults('+');"></li>
+                <li><input id="4" value="4" type="button" onclick="inputResults('4');"></li>
+                <li><input id="5" value="5" type="button" onclick="inputResults('5');"></li>
+                <li><input id="6" value="6" type="button" onclick="inputResults('6');"></li>
+                <li><input id="subtraction" value="-" type="button" onclick="inputResults('-');"></li>
+                <li><input id="7" value="7" type="button" onclick="inputResults('6');"></li>
+                <li><input id="8" value="8" type="button" onclick="inputResults('8');"></li>
+                <li><input id="9" value="9" type="button" onclick="inputResults('9');"></li>
+                <li><input id="multiplication" value="*" type="button" onclick="inputResults('*');"></li>
+                <li><input id="delete" value="C" type="button" onclick="Delete();"></li>
+                <li><input id="0" value="0" type="button" onclick="inputResults('0');"></li>
+                <li><input id="calculation" value="=" type="button" onclick="Calculation();"></li>
+                <li><input id="share" value="/" type="button" onclick="inputResults('/');"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function Delete() {
+        document.getElementById('results').value = '';
+    }
+    function inputResults(value){
+        if(document.getElementById('results').value !== 0){
+            document.getElementById('results').value += value;
+        }else {
+            document.getElementById('results').value = value;
+        }
+    }
+    function Calculation() {
+        let inputResults = document.getElementById('results').value;
+        let results = eval(inputResults);
+        document.getElementById('results').value = results;
+    }
+</script>
+</html>
